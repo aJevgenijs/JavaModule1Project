@@ -17,7 +17,8 @@ public class Solution {
             'ъ', 'ы', 'ь', 'э', 'я', '.', ',', '«', '»', '"', '\'', ':', '!', '?', ' '};
 
     public static void main(String[] args) {
-        System.out.println("[1 - Шифрование] [2 - Расшифровка], [3 - Bruteforce], [exit - Выход из программы], src/text");
+        String fileSeparator = System.getProperty("file.separator");
+        System.out.println("[1 - Шифрование] [2 - Расшифровка], [3 - Bruteforce], [exit - Выход из программы]");
         BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
         try {
             userInput = inputReader.readLine();
@@ -27,26 +28,58 @@ public class Solution {
                     case "1" -> {
                         System.out.println("cipher");
                         theLoop = false;
-                        System.out.println("Введите путь к файлу с текстом для шифрования. src/text");
+                        System.out.println("Введите путь к файлу с текстом для шифрования. src/text.txt");
                         fileNameIn = inputReader.readLine();
-                        System.out.println("Введите путь к файлу для вывода данных шифрования. src/cipherResult");
+                        File fileIn = new File(fileNameIn);
+                        while (!fileIn.exists()) {
+                            System.out.println("такого файла не существует, Введите путь к файлу с текстом для шифрования. src/text.txt ");
+                            fileNameIn = inputReader.readLine();
+                            fileIn = new File(fileNameIn);
+                        }
+                        System.out.println("Введите путь к файлу для вывода зашифрованного текста. src/cipherResult.txt");
                         fileNameOut = inputReader.readLine();
-                        //
-                        //Валидация файла вывода
-                        //
+                        if (fileNameOut.equals(".bash_profile") || fileNameOut.equals("hosts")) {
+                            while (true) {
+                                System.out.println("Запрещенное название файла");
+                                System.out.println("Введите путь к файлу для вывода текста деШифрования. src/deCipherResult.txt");
+                                fileNameOut = inputReader.readLine();
+                                if (!fileNameOut.equals(".bash_profile")) {
+                                    if (!fileNameOut.equals("hosts")) {
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
                         System.out.println("Введите ключ");
                         key = Integer.parseInt(inputReader.readLine());
                         cipher(fileNameIn, fileNameOut, key);
                     }
                     case "2" -> {
                         System.out.println("decipher");
-                        System.out.println("Введите путь к файлу с зашифрованным текстом. src/cipherResult");
+                        System.out.println("Введите путь к файлу с зашифрованным текстом. src/cipherResult.txt");
                         fileNameIn = inputReader.readLine();
-                        System.out.println("Введите путь к файлу для вывода текста деШифрования. src/deCipherResult");
+                        File fileIn = new File(fileNameIn);
+                        while (!fileIn.exists()) {
+                            System.out.println("такого файла не существует, Введите путь к файлу с зашифрованным текстом. src/cipherResult.txt");
+                            fileNameIn = inputReader.readLine();
+                            fileIn = new File(fileNameIn);
+                        }
+                        System.out.println("Введите путь к файлу для вывода текста деШифрования. src/deCipherResult.txt");
                         fileNameOut = inputReader.readLine();
-                        //
-                        //Валидация файла вывода
-                        //
+                        if (fileNameOut.equals(".bash_profile") || fileNameOut.equals("hosts")) {
+                            while (true) {
+                                System.out.println("Запрещенное название файла");
+                                System.out.println("Введите путь к файлу для вывода текста деШифрования. src/deCipherResult.txt");
+                                fileNameOut = inputReader.readLine();
+                                if (!fileNameOut.equals(".bash_profile")) {
+                                    if (!fileNameOut.equals("hosts")) {
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
                         System.out.println("Введите ключ");
                         key = Integer.parseInt(inputReader.readLine());
                         deCipher(fileNameIn, fileNameOut, key);
@@ -55,13 +88,28 @@ public class Solution {
                     case "3" -> {
                         System.out.println("bruteforce");
                         theLoop = false;
-                        System.out.println("Введите путь к файлу с зашифрованным текстом. src/deCipherResult");
+                        System.out.println("Введите путь к файлу с зашифрованным текстом. src/cipherResult.txt");
                         fileNameIn = inputReader.readLine();
-                        System.out.println("Введите путь к файлу для вывода текста деШифрования. src/bfResult");
+                        File fileIn = new File(fileNameIn);
+                        while (!fileIn.exists()) {
+                            System.out.println("такого файла не существует, Введите путь к файлу с зашифрованным текстом. src/cipherResult.txt");
+                            fileNameIn = inputReader.readLine();
+                            fileIn = new File(fileNameIn);
+                        }
+                        System.out.println("Введите путь к файлу для вывода текста деШифрования. src/bfResult.txt");
                         fileNameOut = inputReader.readLine();
-                        //
-                        //Валидация файла вывода
-                        //
+                        if (fileNameOut.equals(".bash_profile") || fileNameOut.equals("hosts")) {
+                            while (true) {
+                                System.out.println("Запрещенное название файла");
+                                System.out.println("Введите путь к файлу для вывода текста деШифрования. src/deCipherResult.txt");
+                                fileNameOut = inputReader.readLine();
+                                if (!fileNameOut.equals(".bash_profile")) {
+                                    if (!fileNameOut.equals("hosts")) {
+                                        break;
+                                    }
+                                }
+                            }
+                        }
                         bruteForce(fileNameIn, fileNameOut);
                     }
                     default -> {
