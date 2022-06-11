@@ -149,9 +149,7 @@ public class Solution {
                     for (int i = 0; i < ALPHABET.length; i++) {
                         if (ALPHABET[i] == character) {
                             int index = i + aKey;
-                            if (index >= 40) {
-                                index -= 40;
-                            }
+                            index = index % 40;
                             outputText.append(ALPHABET[index]);
                             found = true;
                             break;
@@ -189,6 +187,7 @@ public class Solution {
                     for (int i = 0; i < ALPHABET.length; i++) {
                         if (ALPHABET[i] == character) {
                             int index = i - aKey;
+                            index = index % 40;
                             if (index < 0) {
                                 index += 40;
                             }
@@ -212,6 +211,7 @@ public class Solution {
         }
     }
 
+    // Применяем Брут Форс
     public static void bruteForce(String fileName1, String fileName2) {
         int maxCount = 0;
         int currentCount;
@@ -241,7 +241,7 @@ public class Solution {
                 System.out.println("IOException BruteForce");
             }
         }
-        // Выводим расшифрованный текст в src/deCipherResult
+        // Выводим расшифрованный текст в fileName2
         deCipher(fileName1, fileName2, index);
     }
 
