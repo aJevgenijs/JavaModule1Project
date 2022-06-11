@@ -38,13 +38,13 @@ public class Solution {
                         }
                         System.out.println("Введите путь к файлу для вывода зашифрованного текста. src/cipherResult.txt");
                         fileNameOut = inputReader.readLine();
-                        if (fileNameOut.equals(".bash_profile") || fileNameOut.equals("hosts")) {
+                        if (fileNameOut.matches("(.*)\\.bash_profile") || fileNameOut.matches("(.*)hosts")) {
                             while (true) {
                                 System.out.println("Запрещенное название файла");
                                 System.out.println("Введите путь к файлу для вывода текста деШифрования. src/deCipherResult.txt");
                                 fileNameOut = inputReader.readLine();
-                                if (!fileNameOut.equals(".bash_profile")) {
-                                    if (!fileNameOut.equals("hosts")) {
+                                if (!fileNameOut.matches("(.*)\\.bash_profile")) {
+                                    if (!fileNameOut.matches("(.*)hosts")) {
                                         break;
                                     }
                                 }
@@ -67,13 +67,13 @@ public class Solution {
                         }
                         System.out.println("Введите путь к файлу для вывода текста деШифрования. src/deCipherResult.txt");
                         fileNameOut = inputReader.readLine();
-                        if (fileNameOut.equals(".bash_profile") || fileNameOut.equals("hosts")) {
+                        if (fileNameOut.matches("(.*)\\.bash_profile") || fileNameOut.matches("(.*)hosts")) {
                             while (true) {
                                 System.out.println("Запрещенное название файла");
                                 System.out.println("Введите путь к файлу для вывода текста деШифрования. src/deCipherResult.txt");
                                 fileNameOut = inputReader.readLine();
-                                if (!fileNameOut.equals(".bash_profile")) {
-                                    if (!fileNameOut.equals("hosts")) {
+                                if (!fileNameOut.matches("(.*)\\.bash_profile")) {
+                                    if (!fileNameOut.matches("(.*)hosts")) {
                                         break;
                                     }
                                 }
@@ -98,13 +98,13 @@ public class Solution {
                         }
                         System.out.println("Введите путь к файлу для вывода текста деШифрования. src/bfResult.txt");
                         fileNameOut = inputReader.readLine();
-                        if (fileNameOut.equals(".bash_profile") || fileNameOut.equals("hosts")) {
+                        if (fileNameOut.matches("(.*)\\.bash_profile") || fileNameOut.matches("(.*)hosts")) {
                             while (true) {
                                 System.out.println("Запрещенное название файла");
                                 System.out.println("Введите путь к файлу для вывода текста деШифрования. src/deCipherResult.txt");
                                 fileNameOut = inputReader.readLine();
-                                if (!fileNameOut.equals(".bash_profile")) {
-                                    if (!fileNameOut.equals("hosts")) {
+                                if (!fileNameOut.matches("(.*)\\.bash_profile")) {
+                                    if (!fileNameOut.matches("(.*)hosts")) {
                                         break;
                                     }
                                 }
