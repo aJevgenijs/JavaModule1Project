@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Шифруем, расшифровываем и ломаем Цезаря.
@@ -178,7 +178,8 @@ public class Solution {
         boolean found;
         try {
             BufferedReader readingFile = new BufferedReader(new FileReader(fileName1));
-            BufferedWriter writeFile = new BufferedWriter(new FileWriter(fileName2));
+            // BufferedWriter writeFile = new BufferedWriter(new FileWriter(fileName2));
+            BufferedOutputStream writeFile = new BufferedOutputStream(new FileOutputStream(fileName2));
             while (readingFile.ready()) {
                 outputText.setLength(0);
                 inputText = readingFile.readLine().toCharArray();
@@ -200,7 +201,9 @@ public class Solution {
                         outputText.append(character);
                     }
                 }
-                writeFile.write(outputText + "\n");
+                writeFile.write(outputText.toString().getBytes());
+                String next = "\n";
+                writeFile.write(next.getBytes());
                 writeFile.flush();
             }
             writeFile.close();
